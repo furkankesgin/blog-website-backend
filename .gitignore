@@ -32,5 +32,8 @@ build/
 ### VS Code ###
 .vscode/
 
+### Mac ###
+.DS_Store
+
 ### Local ###
 application-local.yaml
