@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: blog
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger
+    docExpansion: none
