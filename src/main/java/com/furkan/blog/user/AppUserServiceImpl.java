@@ -17,12 +17,26 @@ public class AppUserServiceImpl implements AppUserService {
     private final ModelMapper mapper;
 
     @Override
-    public AppUser createCurrentUser() {
-        var user = AppUser.builder()
+    public CurrentUserResponse createCurrentUser() {
+        var currentUser = AppUser.builder()
                 .id(currentUserService.getCurrentUser().orElseThrow(ResourceNotFoundException::new).getId())
                 .build();
 
-        return repository.save(user);
+        var user = repository.save(currentUser);
+
+        return CurrentUserResponse.builder()
+                .id(user.getId())
+                .build();
+    }
+
+    @Override
+    public CurrentUserResponse getCurrentUser() {
+        var userId = currentUserService.getCurrentUser().orElseThrow(ResourceNotFoundException::new).getId();
+        var user = repository.findById(userId).orElseThrow(ResourceNotFoundException::new);
+
+        return CurrentUserResponse.builder()
+                .id(user.getId())
+                .build();
     }
 
 }

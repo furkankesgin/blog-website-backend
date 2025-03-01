@@ -1,5 +1,7 @@
 package com.furkan.blog.user;
 
 public interface AppUserService {
-    AppUser createCurrentUser();
+    CurrentUserResponse createCurrentUser();
+
+    CurrentUserResponse getCurrentUser();
 }
